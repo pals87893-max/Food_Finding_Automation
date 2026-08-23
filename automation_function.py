@@ -12,7 +12,7 @@ class Recipe(BaseModel):
     prep_time_minutes: Optional[int] = Field(description="Prep time in minutes.")
 
 
-client = genai.Client(api_key="os.environ["GEMINI_API_KEY"]")
+client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 def get_structured_response(prompt: str, schema: Type[T],) -> T:
     interaction = client.interactions.create(
         model="gemini-3.7-flash",
