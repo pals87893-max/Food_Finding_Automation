@@ -15,12 +15,13 @@ A Flask web app that turns your leftover ingredients into creative recipes using
 
 ```
 your_project/
-├── app.py              # Flask app & routes
-├── recipe_ai.py        # Gemini client, Recipe schema, prompt logic
+├── main.py              # Flask app & routes
+├── automation_function.py        # Gemini client, Recipe schema, prompt logic
 ├── templates/
 │   └── index.html      # Chat UI
 ├── static/
-│   └── chat.js          # Frontend fetch logic
+│   └── script.js          # Frontend fetch logic
+│   └── styles.js
 ├── requirements.txt
 └── README.md
 ```
@@ -29,7 +30,7 @@ your_project/
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/yourusername/ai-recipe-finder.git
+   git clone https://github.com/pals87893-max/Food_Finding_Automation.git
    cd ai-recipe-finder
    ```
 
