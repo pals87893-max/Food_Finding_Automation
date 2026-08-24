@@ -44,7 +44,7 @@ body {
 .app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 20px 24px 32px;
+  padding: 20px 2px 32px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -108,7 +108,29 @@ body {
   .layout { grid-template-columns: 1fr; }
 }
 
-.chat-panel, .display-panel {
+.chat-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  max-height: 721px;
+  min-height: 520px;
+  overflow: hidden;
+  width: 450;
+  overflow-y: auto; 
+  overflow-x: hidden;    
+  scroll-behavior: smooth;
+}
+.chat-recipe-img {
+  max-width: 100%;       /* Prevents image from stretching wider than the bubble */
+  height: auto;          /* Maintains original photo proportions */
+  border-radius: 8px;    /* Matches modern chat UI styles */
+  margin-top: 10px;      /* Separates the image cleanly from the text block above it */
+  display: block;
+}
+.display-panel{
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -133,6 +155,41 @@ body {
   font-size: 13px;
   color: var(--text-muted);
   margin: 0;
+}
+
+/* ---------- Model select ---------- */
+.model-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--panel-alt);
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-muted) 50%),
+                     linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
+  background-position: calc(100% - 16px) center, calc(100% - 11px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 10px 30px 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.model-select:hover {
+  border-color: var(--accent);
+}
+.model-select:focus-visible,
+.model-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.model-select option {
+  background: var(--panel);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
 }
 
 /* ---------- Chat ---------- */
