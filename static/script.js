@@ -36,6 +36,7 @@ function addChatMessage(text, sender) {
 
 chatForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  const model=modelDropdownMenu.value;
   const text = chatInput.value.trim();
   if (!text) return;
 
@@ -50,7 +51,7 @@ chatForm.addEventListener('submit', async (e) => {
     const response = await fetch("/", {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({ ingredients: text })
+      body: new URLSearchParams({ model:model, ingredients: text })
     });
 
     const data = await response.json(); // or response.json() if Flask returns JSON
