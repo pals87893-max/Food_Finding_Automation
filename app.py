@@ -14,10 +14,11 @@ app=Flask(__name__)
 def home():
     if request.method=='POST':
         prompt=request.form['ingredients']
+        model=request.form['model']
         if not prompt:
             return jsonify({"reply": "Please enter some ingredients"}), 400
         try:
-            result=recipie(prompt)
+            result=recipie(prompt,model)
             result_with_link= add_youtube_link(result)
             return jsonify({
                 "status":"ok",
