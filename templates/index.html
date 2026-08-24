@@ -33,8 +33,13 @@
             <p>Hi! Tell me what leftover ingredients you have and I'll find recipes that use them.</p>
           </div>
         </div>
-        <form class="chat-input" id="chatForm" action="{{ url_for('home') }}" method="POST">
-          <input type="text" name=ingredients id="chatInput" placeholder="e.g. rice, eggs, spinach..." autocomplete="off" required>
+        <form class="chat-input" id="chatForm" method="POST">
+          <select class="model-select" name="model" id="modelDropdownMenu">
+            <option value="gemini-3.7-flash" selected>3.7-Flash</option>
+            <option value="gemini-3.5-flash">3.5-Flash</option>
+            <option value="gemini-2.5-flash">2.5-Flash</option>
+          </select>
+          <input type="text" id="chatInput" name="ingredients" placeholder="e.g. rice, eggs, spinach..." autocomplete="off" required>
           <button type="submit" aria-label="Send message">→</button>
         </form>
       </section>
