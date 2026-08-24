@@ -13,9 +13,9 @@ class Recipe(BaseModel):
 
 
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-def get_structured_response(prompt: str, schema: Type[T],) -> T:
+def get_structured_response(prompt: str, schema: Type[T],model_name:str) -> T:
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model=f"{model_name}",
         input=prompt,
         response_format={
             "type": "text",
@@ -25,7 +25,7 @@ def get_structured_response(prompt: str, schema: Type[T],) -> T:
     )
     return schema.model_validate_json(interaction.output_text)
 
-def recipie(ingredients:str)-> Recipe:
+def recipie(ingredients:str,model_name:str)-> Recipe:
     prompt=f"""You are a recipe generator that returns structured data.
 
 Task: Create a recipe using these ingredients: {ingredients}
@@ -37,5 +37,4 @@ Requirements for your response:
 - prep_time_minutes: Your best estimate of preparation time in minutes, as a plain integer only (e.g. 15, not "15 minutes" or "about 15"). If truly unknown, omit this field or return null — do not guess a string.
 
 Return only the structured data matching the required schema. Do not include any explanation, commentary, or text outside the schema fields."""
-    return get_structured_response(prompt,Recipe)
-
+    return get_structured_response(prompt,Recipe,model_name)
