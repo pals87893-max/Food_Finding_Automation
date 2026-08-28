@@ -17,12 +17,9 @@ def recipe_image(recipe_name:str):
         prompt=f"show me the picture of the food {recipe_name}",
         model="black-forest-labs/FLUX.1-schnell"
     )
-    old_file= glob.glob(os.path.join("static","recipe_here.png"))
+    old_file= os.path.join("static","recipe_here.png")
 
     if old_file:
         os.remove(old_file[0])
-        image.save(f"static/recipe_here.png")
-    # 4. Save the generated image
-    else:
-        image.save(f"static/recipe_here.png")
+    return image.save(f"static/recipe_here.png")
 
