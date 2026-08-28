@@ -1,5 +1,6 @@
 from huggingface_hub import InferenceClient
 import os
+import glob
 
 # 1. Paste your free Hugging Face User Access Token
 # Create one for free at: https://huggingface.co/settings/tokens
@@ -16,6 +17,12 @@ def recipe_image(recipe_name:str):
         prompt=f"show me the picture of the food {recipe_name}",
         model="black-forest-labs/FLUX.1-schnell"
     )
+    old_file= glob.glob(os.path.join("static","recipe_here.png"))
 
+    if old_file:
+        os.remove(old_file[0])
+        image.save(f"static/recipe_here.png")
     # 4. Save the generated image
-    return image.save("static/recipe_here.png")
+    else:
+        image.save(f"static/recipe_here.png")
+
