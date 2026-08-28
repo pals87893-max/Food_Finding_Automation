@@ -20,6 +20,6 @@ def recipe_image(recipe_name:str):
     old_file= os.path.join("static","recipe_here.png")
 
     if old_file:
-        os.remove(old_file[0])
+        os.remove(old_file)
     return image.save(f"static/recipe_here.png")
 
