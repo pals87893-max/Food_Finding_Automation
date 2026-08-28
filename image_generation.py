@@ -1,6 +1,5 @@
 from huggingface_hub import InferenceClient
 import os
-import glob
 
 # 1. Paste your free Hugging Face User Access Token
 # Create one for free at: https://huggingface.co/settings/tokens
@@ -19,7 +18,7 @@ def recipe_image(recipe_name:str):
     )
     old_file= os.path.join("static","recipe_here.png")
 
-    if old_file:
+    if os.path.exists(old_file):
         os.remove(old_file)
-    return image.save(f"static/recipe_here.png")
+    return image.save("static/recipe_here.png")
 
