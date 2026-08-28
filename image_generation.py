@@ -3,7 +3,7 @@ import os
 
 # 1. Paste your free Hugging Face User Access Token
 # Create one for free at: https://huggingface.co/settings/tokens
-HF_TOKEN = os.environ["GEMINI_API_KEY"]
+HF_TOKEN = os.environ["HF_API_KEY"]
 
 # recipe=Recipe("onion","rice","chicken")
 
