@@ -11,7 +11,6 @@ def add_youtube_link(recipe: Recipe) -> dict:
     return data
 
 app=Flask(__name__)
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 @app.route("/", methods=['GET','POST'])
 def home():
