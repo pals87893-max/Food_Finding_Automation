@@ -34,8 +34,6 @@ def home():
     
     return render_template('index.html')
 
-from urllib.parse import quote
-
 
 
 
